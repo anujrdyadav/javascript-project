@@ -2,70 +2,69 @@
 let myQuote = [
     {
         quote: "The purpose of our lives is to be happy.",
-        name: " Dalai Lama"
+        author: " Dalai Lama"
     },
     {
         quote: "Life is what happens when you're busy making other plans.",
-        name: "John Lennon"
+        author: "John Lennon"
     },
     {
         quote: "Get busy living or get busy dying.",
-        name: "Stephen King"
+        author: "Stephen King"
     },
     {
         quote: "You only live once, but if you do it right, once is enough.",
-        name: "Mae West"
+        author: "Mae West"
     },
     {
         quote: "Many of lifes failures are people who did not realize how close they were to success when they gave up.",
-        name: "Thomas A. Edison"
+        author: "Thomas A. Edison"
     },
     {
         quote: "If you want to live a happy life, tie it to a goal, not to people or things.",
-        name: "Albert Einstein"
+        author: "Albert Einstein"
     },
     {
         quote: "Never let the fear of striking out keep you from playing the game.",
-        name: "Babe Ruth"
+        author: "Babe Ruth"
     },
     {
         quote: "Money and success dont change people; they merely amplify what is already there.",
-        name: "Will Smith"
+        author: "Will Smith"
     },
 ]
-//localStorage.setItem('quote', JSON.stringify(myQuote))
+// localStorage.setItem('quote', JSON.stringify(myQuote))
 
 let getUser = JSON.parse(localStorage.getItem('quote'))
 const btnGenerator = document.querySelector(".btngenerator")
 btnGenerator.addEventListener('click', function () {
-    let index = Math.floor(Math.random() * getUser.length);
-    let quoteValue = getUser[index].quote;
-    let quoteValue2 = "- " + getUser[index].name;
-    document.getElementById("quote1").innerHTML = quoteValue;
-    document.getElementById("name-quote").innerHTML = quoteValue2;
-}) 
+    let quoteIndex = Math.floor(Math.random() * getUser.length);
+    let quoteName = getUser[quoteIndex].quote;
+    let quoteAuthor = "- " + getUser[quoteIndex].author;
+
+    document.getElementById("quote-name").innerHTML = quoteName;
+    document.getElementById("name-author").innerHTML = quoteAuthor;
+})
 
 
-const addInput = document.querySelector(".add-input")
-const nameInput = document.querySelector(".nameInput")
-const btnAdd = document.querySelector(".btnadd")
+const addQuoteInput = document.querySelector(".add-input")
+const authorNameInput = document.querySelector(".name-input")
+const btnAddQuote = document.querySelector(".btn-add")
 
-btnAdd.addEventListener('click', function () {
+btnAddQuote.addEventListener('click', function () {
 
-    const newData = JSON.parse(localStorage.getItem("quote"))
-    if (!addInput.value && !nameInput.value) {
+    const addNewData = JSON.parse(localStorage.getItem("quote"))
+    if (!addQuoteInput.value && !authorNameInput.value) {
         return
     }
-    newData.push({
-        quote: addInput.value,
-        name: nameInput.value
+    addNewData.push({
+        quote: addQuoteInput.value,
+        author: authorNameInput.value
     })
 
     //    console.log(newData);
-    localStorage.setItem('quote', JSON.stringify(newData))
+    localStorage.setItem('quote', JSON.stringify(addNewData))
 
-
-    // myQuote.push(newData)
 
 })
 
